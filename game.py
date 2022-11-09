@@ -30,7 +30,7 @@ while running:
 
 
     elif state == "READY":
-        text = font_press_enter.render("Press [Enter] to play", True, (220,220,10))
+        text = font_press_enter.render("Press [Enter] to play", True, (220,0,10))
         text_rect = text.get_rect(center=(8*32/2, 7*32/2)) 
         screen.blit(text, text_rect)
 
