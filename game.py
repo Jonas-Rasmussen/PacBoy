@@ -22,7 +22,7 @@ running = True
 while running:
     
     if state == "LOAD":
-        pacman = PacMan(0,1)
+        pacman = PacMan(1,1)
         ghost = Ghost(3,2)
         direction = None
         level = Level("level.txt")
@@ -75,7 +75,7 @@ while running:
 
 
         ## Draw ##
-        screen.fill((200,0,0)) 
+        screen.fill((0,0,0)) 
         level.draw(screen)
         ghost.draw(screen)
         pacman.draw(screen)

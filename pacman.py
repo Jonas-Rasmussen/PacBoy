@@ -1,5 +1,7 @@
 import pygame as pg
 
+
+
 class PacMan:
 
     def __init__(self, row, col):
@@ -26,6 +28,7 @@ class PacMan:
     def move(self, level, direction):
         # Move pacman
         moving = False
+        self.direction = direction
         if direction == "up":
             if level.tiles[self.row-1][self.col] != "#":
                 self.row -= 1
@@ -49,11 +52,27 @@ class PacMan:
                 self.sound_move0.play()
             else:
                 self.sound_move1.play()
+        
 
         self.tick += 1 
     
     def draw(self,screen):
 
         # Draw pacman
-        r = self.tick%6
-        screen.blit(self.images[r], (self.col*32, self.row*32)) 
+
+        r = int(self.tick)%6
+        if self.direction == "left":
+            img = self.images[r]
+        elif self.direction == "right":
+            img = (pg.transform.rotate(self.images[r],180))
+        elif self.direction == "up":
+            img = (pg.transform.rotate(self.images[r],-90))
+        elif self.direction == "down":
+            img = pg.transform.rotate(self.images[r],90)
+        else:
+            #screen.blit(self.images[0], (self.col, self.row))
+            img = self.images[0]
+
+
+        #r = self.tick%6
+        screen.blit(img, (self.col*32, self.row*32)) 
